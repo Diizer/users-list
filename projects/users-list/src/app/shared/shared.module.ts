@@ -30,6 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     imports: [
@@ -62,7 +63,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatGridListModule,
         MatProgressBarModule,
         MatChipsModule,
-        MatDialogModule
+        MatDialogModule,
+        MatFormFieldModule
     ],
     providers: []
 })

@@ -38,7 +38,7 @@
       </mat-header-row>
 
       <mat-row *matRowDef=" let user;
-          columns: ['Id', 'Name', 'Username', 'Email']">
+          columns: ['Id', 'Name', 'Username', 'Email']" (click)="onUserDetails(user.id)">
       </mat-row>
 
       <div class="table-no-data flex align-center justify-center" *matNoDataRow>

@@ -1,0 +1,73 @@
+
+<mat-card>
+    <a mat-button color="primary" routerLink="/users">Back To Users</a>
+    <form class="details-form" [formGroup]="form">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Id</mat-label>
+                        <input matInput formControlName="id" readonly>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>First name</mat-label>
+                        <input matInput formControlName="name" readonly>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>User Name</mat-label>
+                        <input matInput formControlName="username" readonly>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <table class="example-full-width" cellspacing="0" formGroupName="address">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Street</mat-label>
+                        <input matInput formControlName="street" readonly>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Suite</mat-label>
+                        <input matInput formControlName="suite" readonly>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" readonly>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Zip</mat-label>
+                        <input matInput formControlName="zipcode" readonly>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" readonly>
+                    </mat-form-field>
+                </td>
+                <td><mat-form-field class="example-full-width">
+                        <mat-label>Phone</mat-label>
+                        <input matInput formControlName="phone" readonly>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+</mat-card>

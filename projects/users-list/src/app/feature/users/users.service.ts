@@ -8,8 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable()
 export class UsersService {
   users$ = new BehaviorSubject<User[]>([]);
+  user$ = new BehaviorSubject<User | null>(null);
   updating$ = new BehaviorSubject<boolean>(false);
-  constructor(private _usersApi: UsersApi, private _snackBar: MatSnackBar) {}
+  constructor(private _usersApi: UsersApi, private _snackBar: MatSnackBar) { }
 
   isUpdating$(): Observable<boolean> {
     return this.updating$.asObservable();
@@ -37,6 +38,26 @@ export class UsersService {
           this.users$.next([]);
         },
       });
+  }
+
+  loadUser(id: number): void {
+    this.user$.next(null);
+
+    this._usersApi
+      .getUserDetails(id)
+      .subscribe({
+        next: (response) => this.user$.next(response),
+        error: (response) => {
+          this._snackBar.open(response.error.error.message, 'Close', {
+            duration: 5000,
+          });
+          this.user$.next(null);
+        },
+      });
+  }
+
+  getUser(): Observable<User | null> {
+    return this.user$.asObservable();
   }
 
   getUsers(): Observable<User[]> {

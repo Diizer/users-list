@@ -1,15 +1,13 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  OnDestroy,
-  ViewChild,
-  AfterViewInit,
+  AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy,
+  ViewChild
 } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { User } from '../models/user';
 import { UsersService } from '../users.service';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-users-page',
@@ -25,7 +23,7 @@ export class UsersPageComponent implements AfterViewInit, OnDestroy {
   tableDataSource = new MatTableDataSource<User>([]);
   isUpdating$: Observable<boolean> = this.usersService.isUpdating$();
 
-  constructor(public readonly usersService: UsersService) {
+  constructor(public readonly usersService: UsersService, private router: Router) {
     this.usersService.loadUsers();
     this.usersService
       .getUsers()
@@ -49,5 +47,9 @@ export class UsersPageComponent implements AfterViewInit, OnDestroy {
 
   onSearch(result: string): void {
     this.tableDataSource.filter = result;
+  }
+
+  onUserDetails(id: number){
+    this.router.navigate([`users/${id}`]);
   }
 }

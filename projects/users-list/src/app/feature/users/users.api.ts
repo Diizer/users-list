@@ -11,4 +11,10 @@ export class UsersApi {
 
     return this.http.get<User[]>(url);
   }
+
+  getUserDetails(id: number): Observable<User> {
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+
+    return this.http.get<User>(url);
+  }
 }
