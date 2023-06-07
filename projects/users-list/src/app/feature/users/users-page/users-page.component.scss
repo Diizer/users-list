@@ -1,0 +1,58 @@
+mat-card {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.table-container {
+  height: 360px;
+  overflow: auto;
+  margin-top: 20px;
+
+  table {
+    width: 100%;
+  }
+}
+
+.table-no-data {
+  min-height: 230px;
+}
+
+@keyframes loader {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  transition: all .5s;
+  transform: translate3d(-1%, -30%, 0);
+  width: 100%;
+
+  &__bar {
+    background: rgba(0, 0, 0, 0.075);
+    overflow: hidden;
+  }
+
+  &__progress {
+    animation: loader .6s ease infinite;
+    background: #ff4081;
+    color: #fff;
+    padding: 1.5px;
+    width: 0;
+    display: block;
+  }
+}
+
+.search-wrapper {
+  display: flex;
+  width: auto;
+  padding: 10px 0px 0px 15px;
+}

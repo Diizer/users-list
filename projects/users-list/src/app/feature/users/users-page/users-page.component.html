@@ -1,0 +1,54 @@
+<mat-card>
+  <div class="search-wrapper">
+    <app-search-input [debounceTime]="1000" (searchValue)="onSearch($event)"></app-search-input>
+  </div>
+
+  <div class="table-container">
+    <div id="progress-bar" class="progress-bar" *ngIf="isUpdating$ | async">
+      <span class="progress-bar__bar">
+        <span class="progress-bar__progress"></span>
+      </span>
+    </div>
+    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 mat-table-striped">
+      <ng-container matColumnDef="Id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let dataItem">
+          <span class="padding_10">{{ dataItem.id }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let dataItem">
+          <span class="padding_10">{{ dataItem.name }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Username">
+        <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+        <mat-cell *matCellDef="let dataItem">
+          <span class="padding_10">{{ dataItem.username }}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let dataItem">
+          <span class="padding_10">{{ dataItem.email }}</span>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="['Id', 'Name', 'Username', 'Email']">
+      </mat-header-row>
+
+      <mat-row *matRowDef=" let user;
+          columns: ['Id', 'Name', 'Username', 'Email']">
+      </mat-row>
+
+      <div class="table-no-data flex align-center justify-center" *matNoDataRow>
+        <span class="padding_10">
+          No data matching the filter.
+        </span>
+      </div>
+    </table>
+    <mat-paginator #paginator [length]="40" [pageSize]="5" aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</mat-card>
